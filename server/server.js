@@ -4,6 +4,8 @@ require("./db");
 const User=require("./models/User.js");
 const Otp=require("./models/Otp.js");
 const nodemailer = require("nodemailer");
+const dotenv=require("dotenv");
+dotenv.config();
 const app=express();
 app.use(cors());
 app.use(express.json());
@@ -29,8 +31,8 @@ const sendOTP = async (email, otp) => {
     let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "sachithbalaka@gmail.com",
-            pass: "pchlvyrfkdvybryr"
+            user: process.env.EMAIL,
+            pass: process.env.PASS
         }
     });
     let mailOptions = {
