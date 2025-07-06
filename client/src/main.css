@@ -1,0 +1,628 @@
+html,body,#root{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*text*/
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff6ec4, #7873f5)!important;
+  background-clip: text !important;             /* standard */
+  -webkit-background-clip: text !important;     /* for WebKit browsers */
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;                /* fallback (optional) */
+}
+
+
+
+/* components */
+
+/* Land */
+
+.Land{
+    height: 100%;
+    overflow: hidden;
+}
+.Dashboard{
+    height: 100%;
+    overflow: hidden;
+}
+/* Nav */
+.Nav{
+    height: 10%;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    border-bottom:2px solid rgba(128,0,128,0.3);
+}
+/*Left*/
+.Left{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.Left h1{
+    /* font-family: 'Pacifico', cursive; */
+    font-family: 'Dancing Script', cursive;
+
+}
+/*Logo*/
+.Logo {
+  height: 40px;         /* Adjust as needed */
+  width: auto;          /* Keeps aspect ratio */
+  margin: 0 10px;       /* Optional spacing */
+  object-fit: contain;  /* Makes it fit cleanly */
+  border-radius: 20px;
+  /* animation: ani 1s linear infinite normal; */
+}
+@keyframes ani {
+    from{
+        box-shadow: 0px 0px 15px white;
+    }to{
+        box-shadow: 0px 0px 0px white;
+    }
+}
+/*Right*/
+.Right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+/*option*/
+/* Common button styles */
+.option {
+  background-color: #2f2f2f !important;
+  color: white !important;
+  font-weight: bolder !important;
+  border-radius: 20px !important;
+}
+
+/* Active option */
+.activeoption {
+  box-shadow: 0 0 2px 2px #7873f5 !important;
+  transition: box-shadow 0.3s ease;
+}
+/* Inactive option */
+.inactiveoption {
+  box-shadow: none !important;
+  border: 0px solid transparent !important; /* optional muted border */
+  transition: box-shadow 0.3s ease;
+}
+
+
+/*Body*/
+.Body{
+    height: 90%;
+    background-color: #1a1a1a;
+    color:white;
+}
+
+/*Signup*/
+.Signup{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Lsignup{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Lsignup img{
+    height: 80%;
+    object-fit: contain;
+    box-shadow: 0 0 5px black;
+    border-radius: 20px;
+}
+
+.Rsignup{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.Take{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* Base container */
+.TextField {
+    width: 600px !important;
+}
+
+/* Label color (normal and focused) */
+.TextField .MuiInputLabel-root {
+    color: #7873f5 !important;
+}
+
+/* Label color when focused */
+.TextField .MuiInputLabel-root.Mui-focused {
+    color: #7873f5 !important;
+}
+
+/* Input field text color and radius */
+.TextField .MuiOutlinedInput-root {
+    color: #7873f5 !important;
+    border-radius: 8px;
+}
+
+/* Border color (default) */
+.TextField .MuiOutlinedInput-notchedOutline {
+    border-color: #7873f5 !important;
+}
+
+/* Border color when focused */
+.TextField .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #7873f5 !important;
+}
+.myButton {
+  width: 600px;
+  height: 50px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e055a8, #5e52d3); /* slightly darker shades */
+  color: #f1e8ff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+  font-family: 'Roboto', sans-serif;
+  opacity: 1;
+}
+.myButton:hover {
+  background: linear-gradient(90deg, #d14b9c, #5043c4); /* even deeper hover gradient */
+  box-shadow: 0 0 12px rgba(255, 110, 196, 0.3), 0 0 16px rgba(120, 115, 245, 0.2);
+}
+
+.disable {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+  color: transparent; /* hide text during loading */
+}
+
+.disable::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.Error .MuiAlert-root {
+    width: 560px;
+    background-color: #2f2f2f; /* dark but distinct background */
+    color: #ffbdf2; /* soft light pink/purple error text */
+    border: 1px solid transparent;
+    border-image: linear-gradient(90deg, #ff6ec4, #7873f5) 1;
+    border-radius: 10px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+}
+
+/* Optional close button if you use it */
+.Error .MuiAlert-icon {
+    color: #ff6ec4;
+}
+
+.Verrify{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.botVerrify{
+    height:23%;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.Password{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.topPassword,.botPassword{
+    height: 30%;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+/*Signin*/
+
+.Signin{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.Rsignin{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Rsignin img{
+    height: 80%;
+    object-fit: contain;
+    box-shadow: 0 0 5px black;
+    border-radius: 20px;
+}
+
+.Lsignin{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.topLsignin,.botLsignin{
+    height: 30%;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/*DashBoard*/
+.Dashboard {
+    display: flex;
+    height: 100%;
+}
+
+/* SideNav styles */
+.SideNav {
+    background-color: black;
+    transition: width 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    border-right:2px solid #1f1f1f;
+}
+.SideNav.open {
+    width: 10%;
+}
+.SideNav.closed {
+    width: 3%;
+}
+.topSideNav{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+}
+.midSideNav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+    width: 100%;
+}
+.sideOption.open{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sideOption.closed{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* For selected side options */
+.sideOption.selected {
+    background: linear-gradient(90deg, #ff6ec4, #7873f5) !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+/* Remove gradient-text styles inside selected option */
+.sideOption.selected .gradient-text {
+    background: none !important;
+    background-clip: unset !important;                /* ✅ Standard */
+    -webkit-background-clip: unset !important;        /* ✅ WebKit */
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+}
+
+
+.notselectedsidenavtext {
+    color: black !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: black !important;
+    font-weight: bold;
+}
+
+/* For not selected side options */
+.sideOption.notselected {
+    background: transparent;
+    color: transparent;
+}
+
+/* Keep gradient for inner content */
+.sideOption.notselected .gradient-text {
+    background: linear-gradient(90deg, #ff6ec4, #7873f5) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+
+.sideOption i,.logout i{
+    font-size: 20px;
+}
+.opttext{
+    padding-left: 8px;
+}
+.sideOption:hover {
+    opacity: 0.8;
+}
+.botSideNav{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.ToggleCircle {
+    width: 30px;
+    height: 100%;
+    border-radius: 50%;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-right: 5px;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.logout.open{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.logout.closed{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Wrap topnav and main area */
+.MainWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TopNav styles */
+.TopNav {
+    background-color: black;
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 10px;
+    position: relative;
+    border-bottom: 2px solid #1f1f1f;
+}
+
+/* Main content area */
+.MainArea {
+    flex: 1;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    overflow-y: auto;
+}
+.DHome{
+    height: 100%;
+}
+.DYours{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.DYoursTop{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Additem{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+}
+.Additem.add{
+    height: 20px;
+    width: 60px;
+    padding: 10px;
+    border: 1px solid rgba(0,128,0,0.5);
+    border-radius: 10px;
+    color: green;
+}
+.Additem.back{
+    height: 20px;
+    width: 60px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,0,0,0.5);
+    color: red;
+}
+.DYoursBot{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.YoursForm{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.addform{
+    height: 400px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+.topform {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 250px;
+}
+.botform {
+    display: flex;
+    height: 150px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fileUploadLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 50px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #e055a8, #5e52d3);
+    color: #f1e8ff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 transparent;
+    opacity: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} 
+.fileInputHidden {
+    display: none;
+} 
+
+.DAccount{
+    height: 100%;
+}
+.DeveloperInfo{
+    height: 100%;
+}
