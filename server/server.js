@@ -5,7 +5,7 @@ const User=require("./models/User.js");
 const Otp=require("./models/Otp.js");
 const nodemailer = require("nodemailer");
 const dotenv=require("dotenv");
-dotenv.config();
+dotenv.config({path:"../.env"});
 const app=express();
 app.use(cors());
 app.use(express.json());
