@@ -1,9 +1,12 @@
 const express=require("express");
 const cors=require("cors");
 require("./db");
+const path = require("path");
 const User=require("./models/User.js");
 const Otp=require("./models/Otp.js");
+const Collection=require("./models/Collection.js");
 const nodemailer = require("nodemailer");
+const multer = require("multer");
 const dotenv=require("dotenv");
 dotenv.config({path:"../.env"});
 const app=express();
@@ -43,6 +46,37 @@ const sendOTP = async (email, otp) => {
     };
     return transporter.sendMail(mailOptions);
 };
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "uploads/");
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        cb(null, `${req.body.itemName}${ext}`);
+    }
+});
+
+const upload = multer({ storage });
+
+app.post("/upload", upload.single("image"), async (req, res) => {
+    try {
+        const { itemName, rentPerDay } = req.body;
+        const imagePath = `/uploads/${req.file.filename}`;
+
+        const newItem = new Collection({
+            itemName,
+            rentPerDay,
+            imagePath,
+        });
+
+        await newItem.save();
+        res.json({ message: "Upload successful" });
+    } catch (error) {
+        console.error("Upload failed:", error);
+        res.status(500).json({ error: "Upload failed" });
+    }
+});
 
 app.post("/updateotp", async (req, res) => {
     const { email, otp } = req.body;
