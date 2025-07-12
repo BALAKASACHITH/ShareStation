@@ -17,7 +17,8 @@ const handleSubmit = async () => {
         buttonRef.current.classList.remove("disable");
         return;
     }
-    const email = JSON.parse(localStorage.getItem("email"));
+    const user = JSON.parse(localStorage.getItem("user"));
+    const email = user?.email;
     const formData = new FormData();
     formData.append("itemName", `${itemName}_${email}`);
     formData.append("rentPerDay", rentPerDay);
