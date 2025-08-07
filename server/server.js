@@ -4,7 +4,7 @@ require("./db");
 const path = require("path");
 const User=require("./models/User.js");
 const Otp=require("./models/Otp.js");
-const Collection=require("./models/Collection.js");
+const Item=require("./models/Item.js");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const dotenv=require("dotenv");
@@ -61,10 +61,12 @@ const upload = multer({ storage });
 
 app.post("/upload", upload.single("image"), async (req, res) => {
     try {
-        const { itemName, rentPerDay } = req.body;
+        const { from,itemName, rentPerDay } = req.body;
+        console.log(from);
         const imagePath = `/uploads/${req.file.filename}`;
 
-        const newItem = new Collection({
+        const newItem = new Item({
+            from,
             itemName,
             rentPerDay,
             imagePath,

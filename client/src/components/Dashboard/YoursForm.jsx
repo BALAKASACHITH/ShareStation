@@ -20,10 +20,11 @@ const handleSubmit = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const email = user?.email;
     const formData = new FormData();
+    formData.append("from",email);
     formData.append("itemName", `${itemName}_${email}`);
     formData.append("rentPerDay", rentPerDay);
     formData.append("image", image);
-
+    console.log(formData);
     try {
         await axios.post("http://localhost:2000/upload", formData, {
             headers: {
