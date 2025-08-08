@@ -13,6 +13,7 @@ const app=express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use('/uploads', express.static('uploads'));
 app.get("/",(req,res)=>{
     res.send("hello how are you");
 })
@@ -144,6 +145,23 @@ app.post("/signin", async (req, res) => {
     }
 });
 
+app.get("/getData",async (req,res)=>{
+    try{
+        const data=await User.find();
+        res.json({d:data});
+    }catch(e){
+        res.json({error:e});
+    }
+})
+
+app.get("/getItem",async(req,res)=>{
+    try{
+        const items=await Item.find();
+        res.json({d:items});
+    }catch(e){
+        res.json({error:e});
+    }
+})
 app.listen(2000,()=>{
     console.log("server is running on port 2000");
 })
