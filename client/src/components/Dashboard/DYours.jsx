@@ -11,7 +11,7 @@ export default function DYours() {
         <div className="DYours">
             <div className="DYoursTop">
                 <div className={`Additem ${active?`back`:'add'}`} onClick={toggleActive}>
-                    {active ? "←Back" : "+ Add"}
+                    {active ? "Back" : "Add"}
                 </div>
             </div>
             <div className="DYoursBot">
