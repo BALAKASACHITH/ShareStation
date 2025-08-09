@@ -4,6 +4,7 @@ import {Navigate,Routes,Route} from 'react-router-dom';
 import Item from "./Item";
 import AllItems from "./AllItems";
 import ViewOtherItem from "./ViewOtherItem";
+import WantForm from "./WantForm";
 export default function DHome(){
     const details=JSON.parse(localStorage.getItem("user"));
     let [items,setItems]=useState([]);
@@ -34,6 +35,7 @@ export default function DHome(){
                 <Routes>
                     <Route path="/" element={<AllItems items={items}/>} />
                     <Route path="/ViewOtherItem" element={<ViewOtherItem/>} />
+                    <Route path="/WantForm" element={<WantForm/>} />
                 </Routes>
             </div>
         </div>

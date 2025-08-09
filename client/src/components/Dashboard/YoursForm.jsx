@@ -7,7 +7,7 @@ export default function YoursForm() {
     const [itemName, setItemName] = useState("");
     const [rentPerDay, setRentPerDay] = useState("");
     const [image, setImage] = useState(null);
-    const [error, setError] = useState("abc");
+    const [error, setError] = useState("");
     const buttonRef=useRef(null);
 
 const handleSubmit = async () => {

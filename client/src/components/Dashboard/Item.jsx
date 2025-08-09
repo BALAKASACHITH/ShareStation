@@ -5,6 +5,10 @@ const Item = ({key, itemName, rent, imgurl, from}) => {
         localStorage.setItem("ViewOtherItem",JSON.stringify({itemName,rent,imgurl,from}));
         navigate("ViewOtherItem");
     }
+    const onWant = () => {
+        localStorage.setItem("WantItem", JSON.stringify({itemName, from}));
+        navigate("WantForm");
+    }
     return (
         <div key={key} className='Item'>
             <div
@@ -18,7 +22,7 @@ const Item = ({key, itemName, rent, imgurl, from}) => {
                 <div className='ViewButton' onClick={onView}>
                     View
                 </div>
-                <div className='WantItButton'>
+                <div className='WantItButton' onClick={onWant}>
                     WantIt
                 </div>
             </div>

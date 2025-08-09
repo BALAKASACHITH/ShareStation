@@ -5,6 +5,7 @@ const path = require("path");
 const User=require("./models/User.js");
 const Otp=require("./models/Otp.js");
 const Item=require("./models/Item.js");
+const Request=require("./models/Request.js");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const dotenv=require("dotenv");
@@ -162,6 +163,26 @@ app.get("/getItem",async(req,res)=>{
         res.json({error:e});
     }
 })
+
+app.post("/submitRequest", async (req, res) => {
+    try {
+        const { itemName, to, from, daysNeeded, contact, location } = req.body;
+        const newRequest = new Request({
+            itemName,
+            to,
+            from,
+            daysNeeded,
+            contact,
+            location
+        });
+        await newRequest.save();
+        res.status(200).json({ success: true, message: "Request submitted successfully" });
+    } catch (error) {
+        console.error("Error submitting request:", error);
+        res.status(500).json({ success: false, message: "Failed to submit request" });
+    }
+});
+
 app.listen(2000,()=>{
     console.log("server is running on port 2000");
 })
