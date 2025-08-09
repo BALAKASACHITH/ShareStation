@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
 const Item = ({key, itemName, rent, imgurl, from}) => {
+    const navigate=useNavigate();
+    const onView=()=>{
+        localStorage.setItem("ViewOtherItem",JSON.stringify({itemName,rent,imgurl,from}));
+        navigate("ViewOtherItem");
+    }
     return (
         <div key={key} className='Item'>
             <div
@@ -9,7 +15,7 @@ const Item = ({key, itemName, rent, imgurl, from}) => {
             >
             </div>
             <div className='ItemFooter'>
-                <div className='ViewButton'>
+                <div className='ViewButton' onClick={onView}>
                     View
                 </div>
                 <div className='WantItButton'>

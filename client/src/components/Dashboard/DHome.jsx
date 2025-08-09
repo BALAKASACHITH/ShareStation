@@ -1,7 +1,9 @@
 import { useEffect,useState} from "react";
 import axios from "axios";
-import {Navigate} from 'react-router-dom';
+import {Navigate,Routes,Route} from 'react-router-dom';
 import Item from "./Item";
+import AllItems from "./AllItems";
+import ViewOtherItem from "./ViewOtherItem";
 export default function DHome(){
     const details=JSON.parse(localStorage.getItem("user"));
     let [items,setItems]=useState([]);
@@ -29,11 +31,10 @@ export default function DHome(){
                 <h2>Hello {userName} Hope You Have A Great Time Ahead !!</h2>
             </div>
             <div className="DHomeBot">
-                {
-                    items.map((i,ind)=>{
-                        return <Item key={ind+1} itemName={i.itemName.split("_")[0]} rent={i.rentPerDay} imgurl={`http://localhost:2000${i.imagePath}`} from={i.from}/>
-                    })
-                }
+                <Routes>
+                    <Route path="/" element={<AllItems items={items}/>} />
+                    <Route path="/ViewOtherItem" element={<ViewOtherItem/>} />
+                </Routes>
             </div>
         </div>
     )
