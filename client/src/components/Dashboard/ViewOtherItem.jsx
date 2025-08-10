@@ -1,4 +1,4 @@
-import { Navigate,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const ViewOtherItem = () => {
     const navigate=useNavigate();
     const item=JSON.parse(localStorage.getItem("ViewOtherItem"));

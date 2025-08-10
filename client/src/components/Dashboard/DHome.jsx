@@ -33,9 +33,9 @@ export default function DHome(){
             </div>
             <div className="DHomeBot">
                 <Routes>
-                    <Route path="/" element={<AllItems items={items}/>} />
-                    <Route path="/ViewOtherItem" element={<ViewOtherItem/>} />
-                    <Route path="/WantForm" element={<WantForm/>} />
+                    <Route path="/*" element={<AllItems items={items}/>} />
+                    <Route path="/ViewOtherItem/*" element={<ViewOtherItem/>} />
+                    <Route path="/WantForm/*" element={<WantForm/>} />
                 </Routes>
             </div>
         </div>

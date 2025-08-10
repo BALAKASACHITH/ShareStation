@@ -1,7 +1,6 @@
 import { useState } from "react";
 import YoursCmp from "./YoursCmp";
 import YoursForm from "./YoursForm";
-
 export default function DYours() {
     const [active, setActive] = useState(false);
     const toggleActive = () => {
