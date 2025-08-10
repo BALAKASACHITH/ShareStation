@@ -696,6 +696,7 @@ html,body,#root{
 }
 .DYours{
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -722,7 +723,8 @@ html,body,#root{
     padding: 10px;
     border: 1px solid rgba(0,128,0,0.5);
     border-radius: 10px;
-    color: green;
+    color: white;
+    background-color: green;
 }
 .Additem.back{
     height: 20px;
@@ -730,7 +732,8 @@ html,body,#root{
     padding: 10px;
     border-radius: 10px;
     border: 1px solid rgba(255,0,0,0.5);
-    color: red;
+    color: white;
+    background-color: red;
 }
 .DYoursBot{
     flex: 1;
@@ -742,9 +745,10 @@ html,body,#root{
 }
 .YoursForm{
     height: 100%;
-    width: 100%;
+    width: 98%;
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -942,7 +946,6 @@ html,body,#root{
 }
 
 .YoursCmp{
-    padding: 10px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -950,14 +953,248 @@ html,body,#root{
     justify-content: flex-start;
     align-items: center;
 }
-.YoursCmpTop{
-    height: 10%;
+.AllMyItem{
+    height: 100%;
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2px;
+    padding: 5px;
+}
+.AllMyItemMain{
+    height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+    gap: 30px;
 }
-.YoursCmpBot{
-    height: 95%;
+
+.ViewMyItemRequest {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #000000 0%, #1a0d26 50%, #2d1b4d 100%);
+}
+
+.ViewOtherItemTop {
+    background: linear-gradient(135deg, #6b46c1, #9333ea);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.ViewOtherItemTop:hover {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    transform: scale(1.02);
+}
+
+.RequestsContainer {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.NoRequests {
+    text-align: center;
+    color: #a855f7;
+    font-size: 18px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    border: 2px solid #6b46c1;
+    font-weight: 500;
+}
+
+.RequestsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.RequestRow {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(26, 13, 38, 0.7));
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(107, 70, 193, 0.3);
+    border: 1px solid #6b46c1;
+    transition: all 0.3s ease;
+}
+
+.RequestRow:hover {
+    box-shadow: 0 8px 24px rgba(107, 70, 193, 0.5);
+    transform: translateY(-3px);
+    border-color: #9333ea;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(26, 13, 38, 0.8));
+}
+
+.RequestInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.RequestFrom {
+    font-size: 20px;
+    font-weight: bold;
+    color: #a855f7;
+    text-shadow: 0 2px 4px rgba(168, 85, 247, 0.3);
+}
+
+.RequestDetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.RequestDetails span {
+    background: linear-gradient(135deg, rgba(107, 70, 193, 0.2), rgba(147, 51, 234, 0.2));
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 1px solid rgba(107, 70, 193, 0.4);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.RequestDetails span:hover {
+    background: linear-gradient(135deg, rgba(107, 70, 193, 0.4), rgba(147, 51, 234, 0.4));
+    border-color: #9333ea;
+    transform: scale(1.05);
+}
+
+
+/* Add this to your existing CSS file */
+
+.DeleteButton {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    min-width: 40px;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+}
+
+.DeleteButton:hover {
+    background: linear-gradient(135deg, #b91c1c, #dc2626);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(220, 38, 38, 0.4);
+}
+
+.DeleteButton:active {
+    transform: scale(0.95);
+}
+
+
+.DeleteButton {
+    flex: 0 0 auto;
+}
+.MyViewButton {
+    width: 30%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.MyViewButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.MyWantItButton {
+    width: 30%;
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.MyWantItButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6d28d9 100%);
+}
+.MyItem {
+    width: 350px;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 10px #7c3aed;
+}
+
+.MyItem:hover {
+    box-shadow: 0 0 10px green;
+    transform: translateY(-6px);
+}
+
+.MyItemImage {
+    width: 100%;
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.MyItemImage::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    pointer-events: none;
+}
+
+.MyItemFooter {
+    height: 20%; /* 20% for buttons */
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }

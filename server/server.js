@@ -9,6 +9,7 @@ const Request=require("./models/Request.js");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const dotenv=require("dotenv");
+const fs = require('fs');
 dotenv.config({path:"../.env"});
 const app=express();
 app.use(cors());
@@ -64,7 +65,6 @@ const upload = multer({ storage });
 app.post("/upload", upload.single("image"), async (req, res) => {
     try {
         const { from,itemName, rentPerDay } = req.body;
-        console.log(from);
         const imagePath = `/uploads/${req.file.filename}`;
 
         const newItem = new Item({
@@ -182,7 +182,45 @@ app.post("/submitRequest", async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to submit request" });
     }
 });
+app.get('/requests', async (req, res) => {
+    try {
+        const allRequests = await Request.find();
+        res.json(allRequests);
+    } catch (error) {
+        console.error('Error fetching requests:', error);
+        res.status(500).json({ error: 'Failed to fetch requests' });
+    }
+});
 
+
+app.delete("/delete-item", async (req, res) => {
+    try {
+        const { itemName, from } = req.body;
+        
+        // Find the item to get the image path
+        const item = await Item.findOne({ itemName, from });
+        if (!item) {
+            return res.status(404).json({ error: "Item not found" });
+        }
+
+        // Delete the image file from server
+        const imagePath = path.join(__dirname, item.imagePath);
+        if (fs.existsSync(imagePath)) {
+            fs.unlinkSync(imagePath);
+        }
+
+        // Delete item from database
+        await Item.deleteOne({ itemName, from });
+
+        // Delete all related requests
+        await Request.deleteMany({ itemName, to: from });
+
+        res.json({ message: "Item and related requests deleted successfully" });
+    } catch (error) {
+        console.error("Delete failed:", error);
+        res.status(500).json({ error: "Delete failed" });
+    }
+});
 app.listen(2000,()=>{
     console.log("server is running on port 2000");
 })

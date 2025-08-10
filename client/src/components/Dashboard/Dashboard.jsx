@@ -12,7 +12,6 @@ export default function Dashboard() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [sideOption, setSideOption] = useState(() => {
         const path = location.pathname;
-        if (path.startsWith('/DashBoard/Yours/ViewMyItemRequestDetails')) return "YoursViewMyItemRequestDetails";
         if (path.startsWith('/DashBoard/Yours/ViewMyItemRequest')) return "YoursViewMyItemRequest";
         if (path.startsWith('/DashBoard/Yours/ViewMyItem')) return "YoursViewMyItem";
         if (path.startsWith('/DashBoard/Yours')) return "Yours";
@@ -28,7 +27,6 @@ export default function Dashboard() {
                 case "Yours": navigate("/DashBoard/Yours"); break;
                 case "YoursViewMyItem": navigate("/DashBoard/Yours/ViewMyItem"); break;
                 case "YoursViewMyItemRequest": navigate("/DashBoard/Yours/ViewMyItemRequest"); break;
-                case "YoursViewMyItemRequestDetails": navigate("/DashBoard/Yours/ViewMyItemRequestDetails"); break;
                 case "Account": navigate("/DashBoard/Account"); break;
                 case "DeveloperInfo": navigate("/DashBoard/DeveloperInfo"); break;
                 default: return <DHome/>;

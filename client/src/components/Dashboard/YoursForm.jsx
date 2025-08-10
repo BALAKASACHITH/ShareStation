@@ -3,7 +3,7 @@ import Input from "./Input";
 import Error from "./Error";
 import axios from "axios";
 import { useRef } from "react";
-export default function YoursForm() {
+export default function YoursForm({active,toggleActive}) {
     const [itemName, setItemName] = useState("");
     const [rentPerDay, setRentPerDay] = useState("");
     const [image, setImage] = useState(null);
@@ -37,6 +37,7 @@ const handleSubmit = async () => {
         setImage(null);
         setError("Done");
         buttonRef.current.classList.remove("disable");
+        window.location.reload();
     } catch (err) {
         console.error("Error uploading data", err);
         setError("Failed to submit data");
@@ -46,6 +47,9 @@ const handleSubmit = async () => {
 
     return (
         <div className="YoursForm">
+            <div className={`Additem ${active?`back`:'add'}`} onClick={toggleActive}>
+                    {active ? "Back" : "Add"}
+            </div>
             <div className="addform">
                 <div className="topform">
                     <Input label="Item Name" value={itemName} change={setItemName} />
